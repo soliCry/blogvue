@@ -46,7 +46,7 @@
       </el-row>
     </div>
     <!-- LoginForm -->
-    <el-dialog @closed="loginFormClose()" modal="false" close-on-click-modal="false" center="true" width="30%"
+    <el-dialog @closed="loginFormClose()" :modal="false" :close-on-click-modal="false" :center="true" width="30%"
                title="登录"
                :visible.sync="loginFormVisible">
       <div slot="title" style="background-color: #f5f7fa">
@@ -66,7 +66,7 @@
       </div>
     </el-dialog>
     <!-- RegisterForm -->
-    <el-dialog modal="false" close-on-click-modal="false" center="true" width="30%" title="登录"
+    <el-dialog :modal="false" :close-on-click-modal="false" :center="true" width="30%" title="登录"
                :visible.sync="registerFormVisible" @close="cancel('registerForm')">
       <div slot="title" style="background-color: #f5f7fa">
         <h2>Register</h2>

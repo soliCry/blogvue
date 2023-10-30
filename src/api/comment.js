@@ -18,6 +18,12 @@ export const reqArticleComments = (articleId) => {
   const headers = {
     'Authorization': 'Bearer ' + token,
   };
-  return axios.get(BASE_URL+'/get-by-article-id'+ articleId ,{headers})
+  return axios.get(BASE_URL+'/get-by-article-id/'+ articleId ,{headers})
 }
 
+export const deleteComment = (commentId) => {
+  const headers = {
+    'Authorization': 'Bearer ' + token,
+  };
+  return axios.delete(BASE_URL+'/delete/'+ commentId,{headers})
+}

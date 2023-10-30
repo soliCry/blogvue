@@ -12,7 +12,7 @@
         <br/>
         <Comments :comment="comment" v-for="(comment,index) in this.comments" :key="index"></Comments>
         <br/>
-        <div class="shadow" v-if="user.userId">
+        <div class="shadow" v-if="user.id">
           <div style="margin-left: 10px;margin-right: 10px;">
             <el-input
               style="margin-top: 10px;"

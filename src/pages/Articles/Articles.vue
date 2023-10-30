@@ -9,7 +9,7 @@
           <br/>
           <el-divider content-position="left"><h3>Article Categories</h3></el-divider>
           <el-menu mode="vertical" active-text-color="#2b2b2b">
-            <el-menu-item :class="{on:flag===1}" :index="1">All Articles</el-menu-item>
+            <el-menu-item :class="{on:flag===1}" :index="(1).toString()">All Articles</el-menu-item>
           </el-menu>
         </div>
       </el-aside>

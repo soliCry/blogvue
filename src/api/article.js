@@ -9,7 +9,7 @@ export const reqArticle = (articleId) => {
     const headers = {
       'Authorization': 'Bearer ' + token,
     };
-    return axios.get(BASE_URL+'/get-article-by-id'+ articleId ,{headers})
+    return axios.get(BASE_URL+'/get-article-by-id/'+ articleId ,{headers})
   }
 
 export const postArticle = (articleId,articleTitle,mdcontent,htmlcontent,articleSummary,userId,userPicture,publishdate,edittime,articleStatus,articlePageviews,articleComments,userNickname,tags,articleFavorites) => {
@@ -34,7 +34,7 @@ export const deleteArticle = (id) => {
   const headers = {
     'Authorization': 'Bearer ' + token,
   };
-  return axios.get(BASE_URL+'/remove-article/'+ id,{headers})
+  return axios.delete(BASE_URL+'/remove-article/'+ id,{headers})
 }
 
 export const getArticleBySum = (Sum,pageNum) => {

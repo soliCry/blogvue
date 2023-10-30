@@ -55,5 +55,5 @@ export const nameCheck = (userName) => {
   const headers = {
     'Authorization': 'Bearer ' + token,
   };
-  return axios.get(BASE_URL+'/name-check/'+userName ,{headers})
+  return axios.get(BASE_URL+'/name-check/'+ userName ,{headers})
 }
