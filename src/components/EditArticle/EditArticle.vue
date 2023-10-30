@@ -50,7 +50,6 @@
         const tagsArray = this.articletag.split(' ');
         const validTags = tagsArray.filter(tag => tag.trim() !== '');
         this.tags = validTags;
-        this.articletag = '';
       },
       commit() {
         if (this.articleTitle === '') {
@@ -65,7 +64,7 @@
         } else {
           this.htmlContent = this.$refs.md.d_render;
           this.addTags();
-          editArticle(null, this.articleTitle, this.mdContent, this.htmlContent, null, this.userId, null, null, null,this.articleStatus, null, null, null, this.tags).then(result => {
+          editArticle(null, this.articleTitle, this.mdContent, this.htmlContent, null, this.userId, null, null, null,this.articleStatus, null, null, null, this.tags, null).then(result => {
             if (result.status === 200) {
               this.$message.success(result.resMsg)
               this.reload()

@@ -20,7 +20,7 @@
     name: "PostArticle",
 
     computed: {
-      ...mapState(['user', 'tag']),
+      ...mapState(['user']),
       id() {
         return this.$store.state.user.userId
       },
@@ -31,7 +31,7 @@
         articletag:'',
         mdContent: '',
         htmlContent: '',
-        articleStatus: 0,
+        articleStatus: 1,
         userId: '',
         tags:[]
       }
@@ -47,9 +47,6 @@
     
     // 将有效的标签保存在 tags 变量中
     this.tags = validTags;
-    
-    // 清空输入框
-    this.articletag = '';
   },
       saveArticle(status, id) {
         if (this.articleTitle === '') {
@@ -66,7 +63,7 @@
           this.htmlContent = this.$refs.md.d_render
           this.userId = id
           this.addTags()
-          postArticle(null, this.articleTitle, this.mdContent, this.htmlContent, null, this.userId, null, null, null,this.articleStatus, null, null, null, this.tags).then(result => {
+          postArticle(null, this.articleTitle, this.mdContent, this.htmlContent, null, this.userId, null, null, null,this.articleStatus, null, null, null, this.tags, null).then(result => {
             if (result.status === 200) {
               this.$message.success(result.resMsg)
               this.reload()

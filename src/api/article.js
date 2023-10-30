@@ -18,6 +18,7 @@ export const postArticle = (articleId,articleTitle,mdcontent,htmlcontent,article
     'Content-Type': 'application/json',
     'Authorization': 'Bearer ' + token,
   };
+  console.log(token)
   return axios.post(BASE_URL+'/create-article',postdata,{headers})
 }
 export const editArticle = (articleId,articleTitle,mdcontent,htmlcontent,articleSummary,userId,userPicture,publishdate,edittime,articleStatus,articlePageviews,articleComments,userNickname,tags,articleFavorites) => {
@@ -47,7 +48,7 @@ export const getArticleByTitle = (Title,pageNum) => {
   const headers = {
     'Authorization': 'Bearer ' + token,
   };
-  return axios.get(BASE_URL+'/get-article-by-sum/' + Title + '/' + pageNum,{headers})
+  return axios.get(BASE_URL+'/get-article-by-title/' + Title + '/' + pageNum,{headers})
 }
 
 export const getArticleByUserid = (userId,pageNum) => {

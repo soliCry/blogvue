@@ -42,7 +42,7 @@
               <el-upload class="img-btn"
                          action="#"
                          :show-file-list="false" :before-upload="beforeAvatarUpload"
-                         :http-request="uploadImg">
+                         >
                 <el-button type="success" plain round size="mini">Change Avatar</el-button>
               </el-upload>
               <el-form label-position="left" label-width="80px">

@@ -7,7 +7,7 @@
         </el-col>
         <el-col :span="8">
           <el-menu style="height: 40px" :default-active="$route.path" mode="horizontal" @select="handleSelect"
-                   active-text-color="#2b2b2b" router="true">
+                   active-text-color="#2b2b2b" :router="true">
             <el-menu-item index="/articles">&nbsp;&nbsp;Article&nbsp;&nbsp;</el-menu-item>
             <el-menu-item index="/about">&nbsp;&nbsp;About&nbsp;&nbsp;</el-menu-item>
           </el-menu>
@@ -25,11 +25,11 @@
             <i slot="prefix" class="el-input__icon el-icon-search" @click="toSearch"></i>
           </el-input>
         </el-col>
-        <el-col :span="8" align="right" class="login" v-if="user.userId">
+        <el-col :span="8" align="right" class="login" v-if="user.id">
           <el-dropdown  style="cursor: pointer" trigger="click">
             <span>
-            <img :src="imageUrl" style="height: 30px;width: 30px;border-radius: 50px">
-              {{this.user.userNickname}}<i class="el-icon-arrow-down el-icon--right"></i>
+            <img :src="require('@/../static/image/avatar.jpeg')" style="height: 30px;width: 30px;border-radius: 50px">
+              {{this.user.username}}<i class="el-icon-arrow-down el-icon--right"></i>
             </span>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item >Logout</el-dropdown-item>

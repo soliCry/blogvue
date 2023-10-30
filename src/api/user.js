@@ -1,8 +1,9 @@
 import axios from 'axios';
-const BASE_URL = 'http://43.134.66.209:8080/api/user'
+const BASE_URL = 'http://43.134.66.209:8082/api/user'
 import store from '../store'
 
 const token = store.state.token;
+const user = store.state.user;
 
 
 export const login = (username, password) => {
@@ -10,7 +11,8 @@ export const login = (username, password) => {
   const headers = {
     'Content-Type': 'application/json',
   };
-  return axios.post(BASE_URL+"/login",logindata,{headers})
+  console.log(user)
+  return axios.post("http://43.134.66.209:8080/api/user/login",logindata,{headers})
 };
 
 export const register = (userName,userPassword,userEmail) => {
@@ -18,7 +20,7 @@ export const register = (userName,userPassword,userEmail) => {
   const headers = {
     'Content-Type': 'application/json',
   };
-  return axios.post(BASE_URL+"/register-save",regdata,{headers})
+  return axios.post("http://43.134.66.209:8080/api/user/register-save",regdata,{headers})
 }
 
 export const reqUserInfo = (userId) => {
