@@ -14,7 +14,7 @@
       </el-col>
       <el-col :span="24" align="left" class="marginleft time">
 
-        <img @click="toUser" :src="article.userPicture"
+        <img @click="toUser" :src="require('@/../static/image/avatar.jpeg')"
              style="width: 40px;height: 40px;border-radius: 50px;cursor: pointer"/>
         <span @click="toUser" style="cursor: pointer">{{article.userNickname}}</span>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -76,10 +76,10 @@
             }).then(() => {
               cancelFavorite(null, this.user.userId,this.article.articleId,null,1).then(result => {
                 if (result.status === 200) {
-                  this.$message.success(result.resMsg)
+                  this.$message.success("Successful")
                   this.isFavorited = false
                 } else
-                  this.$message.error(result.resMsg)
+                  this.$message.error("Something wrong")
               })
             });
           } else {
@@ -89,10 +89,10 @@
             }
             favorite(null, this.user.userId,this.article.articleId,null,1).then(result => {
               if (result.status === 200) {
-                this.$message.success(result.resMsg)
+                this.$message.success("Successful")
                 this.isFavorited = true
               } else
-                this.$message.error(result.resMsg)
+                this.$message.error("Something wrong")
             })
           }
         }else {

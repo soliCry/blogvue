@@ -2,7 +2,7 @@
   <div class="shadow">
     <br/>
     <div>
-      <img :src="userInfo.userPicture" style="width: 50px;height: 50px;border-radius:50px">
+      <img  style="width: 50px;height: 50px;border-radius:50px">
       <div>
         <span>{{userInfo.userNickname}}</span>
         <br>

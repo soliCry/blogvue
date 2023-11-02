@@ -64,12 +64,13 @@
           this.htmlContent = this.$refs.md.d_render
           this.userId = id
           this.addTags()
+          console.log(this.userId)
           postArticle(null, this.articleTitle, this.mdContent, this.htmlContent, null, this.userId, null, null, null,this.articleStatus, null, null, null, this.tags, null).then(result => {
             if (result.status === 200) {
-              this.$message.success(result.resMsg)
+              this.$message.success("Post successful")
               this.reload()
             } else {
-              this.$message.error(result.resMsg)
+              this.$message.error("Something wrong")
             }
             // this.$router.push('/personalspace')
           })

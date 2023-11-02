@@ -66,10 +66,10 @@
           this.addTags();
           editArticle(null, this.articleTitle, this.mdContent, this.htmlContent, null, this.userId, null, null, null,this.articleStatus, null, null, null, this.tags, null).then(result => {
             if (result.status === 200) {
-              this.$message.success(result.resMsg)
+              this.$message.success("Successful")
               this.reload()
             } else {
-              this.$message.error(result.resMsg)
+              this.$message.error("Something wrong")
             }
           })
         }

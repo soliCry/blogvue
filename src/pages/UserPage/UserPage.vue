@@ -8,7 +8,7 @@
         <div class="shadow" style="background-color: #fdfdfd;width: 75%;margin-left: 13%;">
           <el-row>
             <el-col :span="3">
-              <img :src="userInfo.userPicture"
+              <img 
                    style="width: 60px;height: 60px;border-radius: 50px;margin: 30px 20px 20px">
               <span class="time" style="float: left;margin-left: 30px;margin-bottom: 10px">{{userInfo.userRegistetime | formatDate}}</span>
 

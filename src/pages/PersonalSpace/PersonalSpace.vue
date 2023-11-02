@@ -234,14 +234,14 @@
       update() {
         updateUser(this.user.userId, this.userInfo.userName, this.userInfo.userNickname, this.userStatus, this.userInfo.userEmail, null, null, this.userInfo.userSignature).then(result => {
           if (result.status === 200) {
-            this.$message.success(result.resMsg)
+            this.$message.success("Successful")
             this.user.userName = this.userInfo.userName
             this.user.userNickname = this.userInfo.userNickname
             this.user.userEmail = this.userInfo.userEmail
             this.user.userSignature = this.userInfo.userSignature
             this.reload()
           } else {
-            this.$message.error(result.resMsg)
+            this.$message.error("Something wrong")
           }
         })
       },
@@ -328,7 +328,7 @@
       ...mapState(['user', 'IMAGE_URL']),
     },
     mounted() {
-      this.imageUrl = this.IMAGE_URL + this.user.userPicture
+      /* this.imageUrl = this.IMAGE_URL + this.user.userPicture */
       this.getArticleList()
 
       reqFavoriteArticle(this.user.userId).then(result => {

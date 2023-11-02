@@ -70,10 +70,10 @@
         }).then(() => {
           deleteArticle(articleId).then(result =>{
             if (result.status === 200) {
-              this.$message.success(result.resMsg)
+              this.$message.success("Successful")
               this.reload()
             } else {
-              this.$message.error(result.resMsg)
+              this.$message.error("Something wrong")
             }
           })
         }).catch(() => {

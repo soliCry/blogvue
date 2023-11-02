@@ -54,5 +54,5 @@ export const getArticleByUserid = (userId,pageNum) => {
   const headers = {
     'token': token,
   };
-  return axios.get(BASE_URL+'/get-article-by-userid/' + userId + '/' + pageNum,{headers})
+  return axios.get(BASE_URL+'/get-article-by-userId/' + userId + '/' + pageNum,{headers})
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="shadow" align="left">
     <div style="margin-left: 10px;">
-      <img @click="toUser(comment.userId)" :src="comment.userPicture"
+      <img @click="toUser(comment.userId)" :src="require('@/../static/image/avatar.jpeg')"
            style="cursor:pointer;width: 30px;height: 30px;border-radius: 50px">
       <a @click="toUser(comment.userId)" style="text-decoration: none;cursor: pointer">{{comment.userNickname}}</a>
       <span style="color:#909399;font-size:14px;margin-left: 40px">{{comment.publishdate}}</span>

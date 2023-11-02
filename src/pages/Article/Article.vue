@@ -70,11 +70,11 @@
         }else {
           postComment(null,this.article.articleId,this.user.userId,this.comment,null,this.commentstatus).then(result=>{
             if(result.status === 200){
-              this.$message.success(result.resMsg)
+              this.$message.success("Successful")
               this.comment = ''
               this.reload()
             }else {
-              this.$message.error(result.resMsg)
+              this.$message.error("Something wrong")
             }
           })
         }
@@ -84,9 +84,11 @@
       reqArticle(this.$route.params.id).then(result=>{
         if(result.status === 200){
           this.article = result.data
+          console.log(result.data.userId)
           reqUserInfo(result.data.userId).then(result1 => {
             if(result1.status === 200){
               this.userInfo = result1.data
+              console.log(this.userInfo)
             }
           })
         }

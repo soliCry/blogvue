@@ -6,13 +6,13 @@
             <h3>Register</h3>
             <hr>
             <el-form-item prop="username" label="Username">
-              <el-input v-model="registerForm.userName" placeholder="Please enter your username"></el-input>
+              <el-input v-model="registerForm.username" placeholder="Please enter your username"></el-input>
             </el-form-item>
             <el-form-item prop="email" label="Email">
-              <el-input v-model="registerForm.userEmail" placeholder="Please enter your email"></el-input>
+              <el-input v-model="registerForm.email" placeholder="Please enter your email"></el-input>
             </el-form-item>
             <el-form-item prop="password" label="Password">
-              <el-input v-model="registerForm.userPassword" show-password placeholder="Please enter your password"></el-input>
+              <el-input v-model="registerForm.password" show-password placeholder="Please enter your password"></el-input>
             </el-form-item>
             <el-form-item prop="password" label="Repassword">
               <el-input v-model="registerForm.rePassword" show-password placeholder="Please confirm your password"></el-input>
@@ -34,10 +34,10 @@
     data() {
       return {
         registerForm: {
-          userName: '',
-          userPassword: '',
+          username: '',
+          password: '',
           rePassword: '',
-          userEmail: '',
+          email: '',
         },
       };
     },
@@ -50,19 +50,19 @@
         this.$refs[formName].validate(valid => {
           if (valid) {
             let passwordFlag = false
-            if (!this.registerForm.userName) {
+            if (!this.registerForm.username) {
             this.$message.error("Please enter your username");
-            } else if (!this.registerForm.userEmail) {
+            } else if (!this.registerForm.email) {
             this.$message.error("Please enter your email");
             } else {
                 var emailRegex = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
-                if (!emailRegex.test(this.registerForm.userEmail)) {
+                if (!emailRegex.test(this.registerForm.email)) {
                     this.$message.error("Please enter a valid email");
-                } else if (!this.registerForm.userPassword) {
+                } else if (!this.registerForm.password) {
                     this.$message.error("Please enter your password");
                 } else if (!this.registerForm.rePassword) {
                     this.$message.error("Please confirm your password");
-                } else if (this.registerForm.userPassword !== this.registerForm.rePassword) {
+                } else if (this.registerForm.password !== this.registerForm.rePassword) {
                     this.$message.error("Inconsistency between two password entries");
                 } else {
                     // 所有验证通过，可以继续注册逻辑
@@ -72,7 +72,7 @@
 
             //注册
             if (passwordFlag) {
-            register(this.registerForm.userName, this.registerForm.userPassword, this.registerForm.userEmail).then(result => {
+            register(this.registerForm.username, this.registerForm.password, this.registerForm.email).then(result => {
                 if (result.status === 200) {
                 this.$router.push({ path: "/" });
                 } else {

@@ -5,8 +5,8 @@ import store from '../store'
 const token = store.state.token;
 
 
-export const postComment=(commentId,articleId,userId,commentBody,publishdate,comment_status) =>{
-  const postdata = {commentId,articleId,userId,commentBody,publishdate,userPicture,comment_status}
+export const postComment=(id,articleId,userId,commentBody,publishDate,commentStatus) =>{
+  const postdata = {id,articleId,userId,commentBody,publishDate,commentStatus}
   const headers = {
     'Content-Type': 'application/json',
     'token': token,

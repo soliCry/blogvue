@@ -15,8 +15,8 @@ export const login = (username, password) => {
   return axios.post("http://43.134.66.209:8080/api/user/login",logindata,{headers})
 };
 
-export const register = (userName,userPassword,userEmail) => {
-  const regdata = {userName,userPassword,userEmail};
+export const register = (username,password,email) => {
+  const regdata = {username,password,email};
   const headers = {
     'Content-Type': 'application/json',
   };
