@@ -4,7 +4,7 @@
       <HeaderTop></HeaderTop>
     </el-header>
     <el-main>
-      
+      Please login to use our blog
     </el-main>
   </el-container>
 </template>

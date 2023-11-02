@@ -25,7 +25,7 @@ export const register = (userName,userPassword,userEmail) => {
 
 export const reqUserInfo = (userId) => {
   const headers = {
-    'Authorization': 'Bearer ' + token,
+    'token': token,
   };
   return axios.get(BASE_URL+'/get-user-by-id/'+ userId ,{headers})
 }
@@ -34,7 +34,7 @@ export const reqUserList = (userID,pageNum,pageSize,userName,userNickname,userSt
   const reqdata = {userID,pageNum,pageSize,userName,userNickname,userStatus};
   const headers = {
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer ' + token,
+    'token': token,
   };
   return axios.get(BASE_URL+'/get-user-list',{
     params: { reqdata },
@@ -46,14 +46,14 @@ export const updateUser = (userId,userName,userNickname,userStatus,userEmail,use
   const updatedata = {userId,userName,userNickname,userStatus,userEmail,userPicture,userRegistetime,userSignature};
   const headers = {
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer ' + token,
+    'token': token,
   };
   return axios.put(BASE_URL+"/update",updatedata,{headers})
 }
 
 export const nameCheck = (userName) => {
   const headers = {
-    'Authorization': 'Bearer ' + token,
+    'token': token,
   };
   return axios.get(BASE_URL+'/name-check/'+ userName ,{headers})
 }

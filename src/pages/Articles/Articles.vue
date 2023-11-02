@@ -20,7 +20,6 @@
                             :key="index"></ArticleSummary>
             <br>
             <el-pagination
-              @size-change="handleSizeChange"
               @current-change="handleCurrentChange"
               :current-page.sync="this.articleQuery.pageNum"
               :page-sizes="[6]"
@@ -45,41 +44,44 @@
   import {getArticleByTitle} from "../../api/article";
 
   export default {
-    data() {
-      return {
-        flag: 1,
-        articles:[],
-        total: 0,
-        articleQuery:{
-          pageSize: 6,
-          pageNum: 1,
-          userId: '',
-          keyword:'',
-          userNickname:''
-        }
+  data() {
+    return {
+      flag: 1,
+      articles: [],
+      articleQuery: {
+        pageSize: 6,
+        pageNum: 1,
+        keyword: ' ',
+      }
+    }
+  },
+  name: "Articles",
+  components: { ArticleSummary, Footer, HeaderTop },
+  mounted() {
+    this.getList()
+  },
+  watch: {
+    'articleQuery.pageNum': function(newPageNum, oldPageNum) {
+      console.log(this.articleQuery.pageNum)
+      this.getList();
+    }
+  },
+  methods: {
+    async getList() {
+      try {
+        const result = await getArticleByTitle(this.articleQuery.keyword, this.articleQuery.pageNum);
+        this.articles = result.data || [];
+      } catch (error) {
+        console.error("Error fetching articles:", error);
+        // Optionally display an error message to the user
       }
     },
-    name: "Articles",
-    components: {ArticleSummary, Footer, HeaderTop},
-    mounted() {
-      this.getList()
+    handleCurrentChange(val) {
+      this.articleQuery.pageNum = val;
+      // getList() will be called automatically due to the watch
     },
-    methods: {
-      getList() {
-        getArticleByTitle(this.articleQuery.keyword, this.articleQuery.pageNum).then(result => {
-          this.articles = result.data
-        })
-      },
-      handleSizeChange(val) {
-        this.articleQuery.pageSize = val
-        this.getList()
-      },
-      handleCurrentChange(val) {
-        this.articleQuery.pageNum = val
-        this.getList()
-      },
-    },
-  }
+  },
+}
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>

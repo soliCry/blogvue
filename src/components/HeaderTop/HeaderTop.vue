@@ -25,11 +25,11 @@
             <i slot="prefix" class="el-input__icon el-icon-search" @click="toSearch"></i>
           </el-input>
         </el-col>
-        <el-col :span="8" align="right" class="login" v-if="user.id">
+        <el-col :span="8" align="right" class="login" >
           <el-dropdown  style="cursor: pointer" trigger="click">
             <span>
             <img :src="require('@/../static/image/avatar.jpeg')" style="height: 30px;width: 30px;border-radius: 50px">
-              {{this.user.username}}<i class="el-icon-arrow-down el-icon--right"></i>
+              {{this.user.userName}}<i class="el-icon-arrow-down el-icon--right"></i>
             </span>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item >Logout</el-dropdown-item>
@@ -38,15 +38,15 @@
             </el-dropdown-menu>
           </el-dropdown>
         </el-col>
-        <el-col :span="8" align="right" class="unlogin" v-else>
+        <!-- <el-col :span="8" align="right" class="unlogin" v-else>
           <el-button @click="loginFormVisible = true">Login</el-button>
           <span>|</span>
           <el-button @click="registerFormVisible = true">Register</el-button>
-        </el-col>
+        </el-col> -->
       </el-row>
     </div>
     <!-- LoginForm -->
-    <el-dialog @closed="loginFormClose()" :modal="false" :close-on-click-modal="false" :center="true" width="30%"
+    <!-- <el-dialog @closed="loginFormClose()" :modal="false" :close-on-click-modal="false" :center="true" width="30%"
                title="登录"
                :visible.sync="loginFormVisible">
       <div slot="title" style="background-color: #f5f7fa">
@@ -64,9 +64,9 @@
         <el-button @click="loginFormVisible = false">cancel</el-button>
         <el-button type="primary" @click="login()">login</el-button>
       </div>
-    </el-dialog>
+    </el-dialog> -->
     <!-- RegisterForm -->
-    <el-dialog :modal="false" :close-on-click-modal="false" :center="true" width="30%" title="登录"
+    <!-- <el-dialog :modal="false" :close-on-click-modal="false" :center="true" width="30%" title="登录"
                :visible.sync="registerFormVisible" @close="cancel('registerForm')">
       <div slot="title" style="background-color: #f5f7fa">
         <h2>Register</h2>
@@ -89,7 +89,7 @@
         <el-button @click="cancel('registerForm')">Cancel</el-button>
         <el-button type="primary" @click="registerClick('registerForm')">Register</el-button>
       </div>
-    </el-dialog>
+    </el-dialog> -->
   </el-container>
 </template>
 
@@ -105,10 +105,10 @@
         imageUrl:'',
         activeIndex: 'articles',
         keyword: '',
-        loginFormVisible: false,
-        registerFormVisible: false,
+        /* loginFormVisible: false,
+        registerFormVisible: false, */
         select: '',
-        loginForm: {
+        /* loginForm: {
           username: '',
           password: '',
         },
@@ -123,13 +123,6 @@
             {
               required: true,
               message: 'Please enter user name',
-              trigger: 'blur'
-            }
-          ],
-          userNickname: [
-            {
-              required: true,
-              message: 'Please enter nickname',
               trigger: 'blur'
             }
           ],
@@ -154,15 +147,20 @@
               trigger: 'blur'
             }
           ]
-        },
+        }, */
       };
     },
     mounted() {
-      this.imageUrl = this.IMAGE_URL+this.user.userPicture
+      /* this.imageUrl = this.IMAGE_URL+this.user.userPicture */
+      console.log(this.user)
     },
     inject: ["reload"],
     methods: {
       toSearch() {
+        if(this.keyword === ''){
+          this.$message.warning("Search can't be empty")
+          return
+        }
         let path = '/search';
         if(this.select === '1'){
           path += 'bytitle/';
@@ -177,7 +175,7 @@
       handleSelect(key) {
         this.activeIndex = key
       },
-      login() {
+      /* login() {
         if (this.loginForm.username === '') {
           this.$message.warning("Please enter user name")
           return
@@ -229,7 +227,7 @@
             })
           }
         })
-      },
+      }, */
     
       selfClick() {
         this.$router.push('/personalspace')

@@ -9,7 +9,8 @@ import Articles from "../pages/Articles/Articles";
 import UserPage from "../pages/UserPage/UserPage";
 import SearchbyTitle from "../pages/SearchbyTitle/SearchbyTitle";
 import SearchbySum from "../pages/SearchbySum/SearchbySum";
-
+import login from "../pages/login/login";
+import register from "../pages/register/register";
 // 声明使用插件
 Vue.use(VueRouter)
 
@@ -46,7 +47,15 @@ export default new VueRouter({
     },
     {
       path: '/',
-      redirect: '/articles',
+      redirect: '/login',
+    },
+    {
+      path: '/login',
+      component: login,
+    },
+    {
+      path: '/register',
+      component: register,
     },
   ]
 })

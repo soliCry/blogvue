@@ -8,7 +8,7 @@ export const favorite = (id,userId,articleId,favoriteDate,isValid) => {
     const favdata = {id,userId,articleId,favoriteDate,isValid}
     const headers = {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token,
+        'token': token,
       };
     return axios.post(BASE_URL+'/add-favorite/',favdata,{headers})
 }
@@ -16,7 +16,7 @@ export const checkFavorited = (id,userId,articleId,favoriteDate,isValid) => {
     const favdata = {id,userId,articleId,favoriteDate,isValid}
     const headers = {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token,
+        'token': token,
       };
     return axios.post(BASE_URL+'/favorited/',favdata,{headers})
 }
@@ -24,13 +24,13 @@ export const cancelFavorite = (id,userId,articleId,favoriteDate,isValid) => {
     const favdata = {id,userId,articleId,favoriteDate,isValid}
     const headers = {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token,
+        'token': token,
       };
     return axios.delete(BASE_URL+'/cancel/',favdata,{headers})
 }
 export const reqFavoriteArticle = (userId) => {
     const headers = {
-      'Authorization': 'Bearer ' + token,
+      'token': token,
     };
     return axios.get(BASE_URL+'/get-favorite/'+ userId ,{headers})
   }

@@ -6,8 +6,8 @@
     <el-container style="background-color: aliceblue;">
       <el-main>
         <el-tabs type="border-card" class="shadow" style="background-color: #fdfdfd;width: 70%;margin-left: 15%;">
-          <el-tab-pane label="搜索文章：">
-            <span v-if="this.articles.length == 0">抱歉，暂无结果</span>
+          <el-tab-pane label="Search articles：">
+            <span v-if="this.articles.length == 0">Sorry, no results yet.</span>
             <ArticleSummary :article="article" :edit-flag="false" v-for="(article,index) in articles"
                             :key="index"></ArticleSummary>
             <br>

@@ -9,21 +9,21 @@ export const postComment=(commentId,articleId,userId,commentBody,publishdate,com
   const postdata = {commentId,articleId,userId,commentBody,publishdate,userPicture,comment_status}
   const headers = {
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer ' + token,
+    'token': token,
   };
   return axios.post(BASE_URL+'/add-new-comment',postdata,headers)
 }
 
 export const reqArticleComments = (articleId) => {
   const headers = {
-    'Authorization': 'Bearer ' + token,
+    'token': token,
   };
   return axios.get(BASE_URL+'/get-by-article-id/'+ articleId ,{headers})
 }
 
 export const deleteComment = (commentId) => {
   const headers = {
-    'Authorization': 'Bearer ' + token,
+    'token': token,
   };
   return axios.delete(BASE_URL+'/delete/'+ commentId,{headers})
 }

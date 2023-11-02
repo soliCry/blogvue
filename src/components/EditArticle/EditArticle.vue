@@ -2,7 +2,7 @@
   <div class="shadow" align="left">
     <el-input v-model.trim="articleTitle" placeholder="Please enter a title" style="width: 400px;margin-left: 10px"></el-input>
     <el-input placeholder="Please enter your article tag(Use space bar to separate tags)" :value="articletag" @input="articletag = $event" style="width: 500px;margin-top: 10px;"></el-input>
-    <mavon-editor autofocus='false' v-model="mdContent" ref=md
+    <mavon-editor :autofocus='false' v-model="mdContent" ref=md
                   style="min-height:500px;*+height:100%;_height:400px;"/>
     <el-button type="primary" @click="commit()">Submit</el-button>
   </div>

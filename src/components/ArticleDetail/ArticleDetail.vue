@@ -18,7 +18,7 @@
              style="width: 40px;height: 40px;border-radius: 50px;cursor: pointer"/>
         <span @click="toUser" style="cursor: pointer">{{article.userNickname}}</span>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{article.publishdate}}</span>
+        <span>{{article.publishdate | formatDate}}</span>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <span>Read：{{article.articlePageviews}}</span>
         &nbsp;

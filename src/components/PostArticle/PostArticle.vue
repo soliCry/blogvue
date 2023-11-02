@@ -5,7 +5,7 @@
               clearable></el-input>
     <el-input placeholder="Please enter your article tag(Use space bar to separate tags)" :value="articletag" @input="articletag = $event" style="width: 500px;margin-top: 10px;"></el-input>
   </div>
-    <mavon-editor autofocus='false' v-model="mdContent" ref=md
+    <mavon-editor :autofocus='false' v-model="mdContent" ref=md
                   style="min-height:500px;*+height:100%;_height:400px;"/>
 
     <el-button type="primary" @click="saveArticle(1,id)">Post article</el-button>
@@ -39,6 +39,7 @@
     inject: ["reload"],
     methods: {
       addTags() {
+        console.log(this.user)
     // 将输入的标签文本分割成数组，以空格为分隔符
     const tagsArray = this.articletag.split(' ');
     

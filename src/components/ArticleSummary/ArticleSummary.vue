@@ -54,6 +54,7 @@
     inject:["reload"],
     methods:{
       toArticle(){
+        console.log(this.article)
         this.$router.push({
           path: `/article/${this.article.articleId}`,
         })
