@@ -20,8 +20,8 @@
         &nbsp;&nbsp;
         <i class="el-icon-view"></i><span class="summary">&nbsp;{{article.articlePageviews}}</span>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span class="summary">{{article.userNickname}}</span>
-        <span class="summary time">{{article.publishdate}}</span>
+        <span class="summary">{{article.userName}}</span>
+        <span class="summary time">{{formattedTime}}</span>
       </div>
     </div>
     <div v-if="this.editFlag" style="display: inline-block">
@@ -29,7 +29,7 @@
       &nbsp;&nbsp;
       <el-button type="danger" @click="deleteClick(article.articleId)"><i class="el-icon-delete"></i></el-button>
     </div>
-    <el-dialog title="编辑文章" :visible.sync="editDialog" width="80%">
+    <el-dialog title="Edit" :visible.sync="editDialog" width="80%">
       <EditArticle :article="article" ></EditArticle>
     </el-dialog>
   </div>
@@ -43,9 +43,25 @@
     components: {EditArticle},
     data() {
       return{
-        editDialog: false
+        editDialog: false,
+        formattedTime: null,
       }
     },
+    mounted() {
+    // 解析原始时间字符串
+    const rawTime = new Date(this.article.publishdate);
+
+    // 使用Date对象的方法来获取需要的信息，例如：
+    const year = rawTime.getFullYear();
+    const month = rawTime.getMonth() + 1; // 月份从0开始，所以需要加1
+    const day = rawTime.getDate();
+    const hours = rawTime.getHours();
+    const minutes = rawTime.getMinutes();
+    const seconds = rawTime.getSeconds();
+
+    // 构建正常格式时间字符串
+    this.formattedTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+  },
     props: {
       article: Object,
       editFlag: Boolean

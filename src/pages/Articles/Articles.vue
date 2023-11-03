@@ -71,6 +71,7 @@
       try {
         const result = await getArticleByTitle(this.articleQuery.keyword, this.articleQuery.pageNum);
         this.articles = result.data || [];
+        console.log(this.articles)
       } catch (error) {
         console.error("Error fetching articles:", error);
         // Optionally display an error message to the user

@@ -26,7 +26,7 @@ export const cancelFavorite = (id,userId,articleId,favoriteDate,isValid) => {
         'Content-Type': 'application/json',
         'token': token,
       };
-    return axios.delete(BASE_URL+'/cancel/',favdata,{headers})
+    return axios.post(BASE_URL+'/cancel/',favdata,{headers})
 }
 export const reqFavoriteArticle = (userId) => {
     const headers = {

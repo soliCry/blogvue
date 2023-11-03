@@ -4,7 +4,7 @@
       <HeaderTop></HeaderTop>
     </el-header>
     <el-container style="background-color: aliceblue;">
-      <el-aside width="200px">
+      <el-aside width="300px">
         <AuthorInfo :userInfo="this.userInfo"></AuthorInfo>
       </el-aside>
       <el-main class="mainwidth">

@@ -18,7 +18,7 @@
              style="width: 40px;height: 40px;border-radius: 50px;cursor: pointer"/>
         <span @click="toUser" style="cursor: pointer">{{article.userNickname}}</span>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>{{article.publishdate | formatDate}}</span>
+        <span>{{formattedPublishDate}}</span>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <span>Read：{{article.articlePageviews}}</span>
         &nbsp;
@@ -34,7 +34,7 @@
       </el-col>
     </el-row>
     <div class="edittime">
-      <span>Article last edited on&nbsp;{{article.edittime}}</span>
+      <span>Article last edited on&nbsp;{{formattedEditDate}}</span>
     </div>
   </div>
 </template>
@@ -47,6 +47,8 @@
     data() {
       return {
         isFavorited: false,
+        formattedPublishDate: null,
+        formattedEditDate: null,
       }
     },
     name: "ArticleDetail",
@@ -58,7 +60,9 @@
         if (result.status === 200) {
           this.isFavorited = true
         }
-      })
+      }),
+      this.formattedPublishDate = this.formatTime(this.article.publishdate);
+      this.formattedEditDate = this.formatTime(this.article.edittime);
     },
     methods: {
       toUser() {
@@ -66,6 +70,16 @@
           path: `/userpage/${this.article.userId}`,
         })
       },
+      formatTime(timeString) {
+      const rawTime = new Date(timeString);
+      const year = rawTime.getFullYear();
+      const month = rawTime.getMonth() + 1;
+      const day = rawTime.getDate();
+      const hours = rawTime.getHours();
+      const minutes = rawTime.getMinutes();
+      const seconds = rawTime.getSeconds();
+      return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+    },
       favoriteClick() {
         if (this.user.userId) {
           if (this.isFavorited == true) {

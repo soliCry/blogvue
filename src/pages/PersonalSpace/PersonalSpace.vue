@@ -334,6 +334,7 @@
       reqFavoriteArticle(this.user.userId).then(result => {
         if (result.status === 200) {
           this.favorites = result.data
+          console.log(this.favorites)
         }
       })
 
