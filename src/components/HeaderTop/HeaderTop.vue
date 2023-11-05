@@ -32,7 +32,7 @@
               {{this.user.userName}}<i class="el-icon-arrow-down el-icon--right"></i>
             </span>
             <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item >Logout</el-dropdown-item>
+              <el-dropdown-item @click.native="logout">Logout</el-dropdown-item>
               <el-dropdown-item @click.native="selfClick()">Personal Homepage
               </el-dropdown-item>
             </el-dropdown-menu>
@@ -156,6 +156,9 @@
     },
     inject: ["reload"],
     methods: {
+      logout() {
+      this.$router.push('/login')
+    },
       toSearch() {
         if(this.keyword === ''){
           this.$message.warning("Search can't be empty")
